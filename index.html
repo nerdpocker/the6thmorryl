@@ -1415,6 +1415,173 @@ body {
   }
 }
 
+
+
+/* ===== Final layout refinements ===== */
+
+/* Hub menu: one clean vertical list, aligned row by row. */
+#view-hub {
+  justify-content: center;
+  padding-top: max(76px, calc(env(safe-area-inset-top) + 52px));
+  padding-bottom: max(32px, env(safe-area-inset-bottom));
+}
+
+#view-hub .desk {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: min(100%, 420px);
+  max-width: 420px;
+}
+
+#view-hub .desk-item {
+  display: grid;
+  grid-template-columns: 82px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  column-gap: 16px;
+  row-gap: 3px;
+  align-items: center;
+  width: 100%;
+  max-width: 420px;
+  min-height: 96px;
+  padding: 10px 16px;
+  text-align: left;
+}
+
+#view-hub .desk-icon {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  width: 82px;
+  height: 76px;
+}
+
+#view-hub .desk-item-label {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+  font-size: 18px;
+}
+
+#view-hub .desk-item-sub {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Keep the whole page in place; only the letter itself scrolls. */
+#view-letter {
+  min-height: 100svh;
+  height: 100svh;
+  overflow: hidden;
+  padding-top: max(76px, calc(env(safe-area-inset-top) + 58px));
+  padding-bottom: max(18px, env(safe-area-inset-bottom));
+  gap: 0;
+}
+
+#view-letter .feature-title {
+  flex: 0 0 auto;
+}
+
+#view-letter .feature-sub {
+  flex: 0 0 auto;
+  margin-bottom: clamp(14px, 3vh, 28px);
+}
+
+#view-letter .envelope-big {
+  flex: 0 0 auto;
+  margin-bottom: clamp(12px, 2.5vh, 22px);
+}
+
+#view-letter .letter-paper.shown {
+  flex: 0 1 auto;
+  min-height: 0;
+  max-height: clamp(150px, calc(100svh - 430px), 440px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  padding-bottom: 26px;
+}
+
+#view-letter .letter-sign {
+  display: block;
+  margin-top: 20px;
+  padding: 0 0 12px;
+  line-height: 1.6;
+  white-space: normal;
+}
+
+@media (max-width: 600px) {
+  #view-hub .desk {
+    gap: 10px;
+    width: min(100%, 380px);
+  }
+
+  #view-hub .desk-item {
+    grid-template-columns: 72px minmax(0, 1fr);
+    column-gap: 12px;
+    min-height: 86px;
+    padding: 8px 10px;
+  }
+
+  #view-hub .desk-icon {
+    width: 72px;
+    height: 68px;
+  }
+
+  #view-hub .desk-item-label {
+    font-size: 16px;
+  }
+
+  #view-hub .desk-item-sub {
+    font-size: 11px;
+  }
+
+  #view-letter {
+    padding-top: max(70px, calc(env(safe-area-inset-top) + 54px));
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+  }
+
+  #view-letter .feature-sub {
+    margin-bottom: 12px;
+  }
+
+  #view-letter .envelope-big {
+    margin-bottom: 10px;
+  }
+
+  #view-letter .letter-paper.shown {
+    max-height: clamp(145px, calc(100svh - 390px), 390px);
+    padding: 18px 16px 24px;
+  }
+}
+
+@media (max-height: 650px) {
+  #view-letter {
+    padding-top: 62px;
+  }
+
+  #view-letter .feature-sub {
+    margin-bottom: 8px;
+  }
+
+  #view-letter .envelope-big {
+    transform: scale(.82);
+    transform-origin: center;
+    margin-top: -14px;
+    margin-bottom: -4px;
+  }
+
+  #view-letter .letter-paper.shown {
+    max-height: clamp(120px, calc(100svh - 330px), 300px);
+  }
+}
+
 </style>
 </head>
 
